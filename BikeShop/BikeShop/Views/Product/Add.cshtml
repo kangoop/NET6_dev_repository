@@ -14,39 +14,58 @@
 
 @section Site{<partial name="_SiteScriptPartial" />}
 
-<div>
+<div class="container">
 
-
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="categoryname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자전거종류</font></font></label>
-            <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
-            </div>
-          </div>
-
-
-          <hr class="my-4"> 
-
-          <button class="w-100 btn btn-primary btn-lg" id="addbiketype" type="submit"><font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit;">자전거종류 등록하기</font>
-              </font>
-          </button>
-
-            <hr class="=my-4" />
-
-    <div class="row g-3">
+    <div class="container">
+        <div class="row g-3">
         <div class="col-sm-6">
-            <label for="categoryname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">브랜드종류</font></font></label>
-            <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
+            <label for="categoryname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자전거종류</font></font></label>
+        <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
         </div>
+        </div>
+
+
+        <hr class="my-4"> 
+
+        <button class="w-100 btn btn-primary btn-lg" id="addbiketype" type="submit"><font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">자전거종류 등록하기</font>
+            </font>
+        </button>
     </div>
 
-    <button class="w-100 btn btn-primary btn-lg" id="addbiketype" type="submit">
-        <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">브랜드종류 등록하기</font>
-        </font>
-    </button>
+    <hr class="=my-4" />
 
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="brandname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">브랜드종류</font></font></label>
+                <input type="text" class="form-control" id="brandname" placeholder="" value="" required="">
+            </div>
+        </div>
+
+         <hr class="my-4"> 
+
+        <button class="w-100 btn btn-primary btn-lg" id="addbrand" type="submit">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">브랜드종류 등록하기</font>
+            </font>
+        </button>
+    </div>
+
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+               저장완료
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -54,32 +73,34 @@
 Toast 박스 
 *@
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">MessageBox</strong>
-            <small>@System.DateTime.Now.ToString("HH:mm:ss")</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            Save Success
-        </div>
-    </div>
-</div>
+
+
 
 <script>
 
+    
     let button = document.getElementById("addbiketype");
-    button.addEventListener("click", getBikeType);
-
-    function getBikeType() {
+    button.addEventListener("click", () => {
+        let url = "@(ViewData["hosturl"])";
         let biketype = document.getElementById("categoryname");
-        let data = JSON.stringify({  name: biketype.value });
+        let data = JSON.stringify({ name: biketype.value });
 
-        addCategory("api/ProductApi/category", data);
+        addCategory(url, "/api/Product/category", data, document.getElementById("liveToast"));
+       
+    });
 
-    }
+    button = document.getElementById("addbrand");
+    button.addEventListener("click", () => {
+
+        let url = "@(ViewData["hosturl"])";
+        let bikebrand = document.getElementById("brandname");
+        let data = JSON.stringify({ name: bikebrand.value });
+
+        addCategory(url, "/api/Product/brand", data, document.getElementById("liveToast"));
+
+        //addCategory("api/ProductApi", data);
+
+    });
 
 
 </script>

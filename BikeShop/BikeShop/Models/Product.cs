@@ -6,7 +6,8 @@ namespace BikeShop.Models
     public class Product
     {
         [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int? Id { get; set; }
         [Required]
         [Column(TypeName = "varchar(255)")]
         public string? name { get; set; }

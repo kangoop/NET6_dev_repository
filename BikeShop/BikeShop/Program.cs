@@ -16,12 +16,16 @@ namespace BikeShop
             builder.Services.AddDbContext<ProductionDbContext>(options =>
             options.UseSqlServer(ConnectionStrings));
 
+            builder.Services.AddHttpContextAccessor();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
 
             var app = builder.Build();
+
+
+            
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

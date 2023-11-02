@@ -16,6 +16,8 @@ namespace BikeShop.Data
 
         public DbSet<Product?> products { get; set; }
 
+        public DbSet<Brand?> brands { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

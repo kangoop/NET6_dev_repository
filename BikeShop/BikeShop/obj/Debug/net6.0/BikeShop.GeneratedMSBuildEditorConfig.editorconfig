@@ -24,16 +24,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGQuY3NodG1s
+[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxhZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/bike.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxiaWtlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Product/options.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxvcHRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Shared/Error.cshtml]
@@ -46,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/Test/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pc1/OneDrive/Desktop/Local/Dev/Net6/BikeShop/BikeShop_Dev/BikeShop/BikeShop/Views/_ViewImports.cshtml]
