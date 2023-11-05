@@ -1,25 +1,40 @@
-﻿@*
+﻿@using BikeShop.Models;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     Layout = "_Layout";
 
+
     
 }
-
-@*         <form action="javascript:void(0)" method="post" onsubmit="addformType()">
-            <input type="text" id="addformtype" placeholder="" />
-            <input type="submit" value="Add" />
-        </form> *@
 
 @section Site{<partial name="_SiteScriptPartial" />}
 
 <div class="container">
+    
+        <table class="table" id="categoryTable">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+            </tr>
+
+            @foreach (var item in (ViewData[nameof(Category)] as List<Category>))
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.name</td>
+                </tr>
+            }
+
+        </table>
+    
+    <hr class="my-0" />
 
     <div class="container">
         <div class="row g-3">
         <div class="col-sm-6">
-            <label for="categoryname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자전거종류</font></font></label>
+            <h3>자전거종류</h3>
         <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
         </div>
         </div>
@@ -35,10 +50,29 @@
 
     <hr class="=my-4" />
 
+  
+        <table class="table" id="brandTable">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+            </tr>
+
+            @foreach (var item in (ViewData[nameof(Brand)] as List<Brand>))
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                </tr>
+            }
+
+        </table>
+
+    <hr class="my-0" />
+
     <div class="container">
         <div class="row g-3">
             <div class="col-sm-6">
-                <label for="brandname" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">브랜드종류</font></font></label>
+                <h3>브랜드종류</h3>
                 <input type="text" class="form-control" id="brandname" placeholder="" value="" required="">
             </div>
         </div>

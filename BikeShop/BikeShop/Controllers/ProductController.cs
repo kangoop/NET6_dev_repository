@@ -1,4 +1,6 @@
-﻿using BikeShop.Models;
+﻿using BikeShop.Data;
+using BikeShop.Models;
+using BikeShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BikeShop.Controllers
@@ -9,9 +11,12 @@ namespace BikeShop.Controllers
 
         private readonly IHttpContextAccessor _HttpContextAccessor;
 
-        public ProductController(IHttpContextAccessor httpcontextaccessor)
+        private readonly ProductionDbContext _productionDbContext;
+
+        public ProductController(IHttpContextAccessor httpcontextaccessor,ProductionDbContext productionDbContext)
         {
             _HttpContextAccessor= httpcontextaccessor;
+            _productionDbContext= productionDbContext;
         }
 
         [Route("/[controller]")]
@@ -34,6 +39,13 @@ namespace BikeShop.Controllers
             var baseurl = _HttpContextAccessor.HttpContext?.Request.Host;
 
             ViewData["hosturl"] = baseurl;
+
+            var categories = _productionDbContext.categories.ToList();
+
+            var brands = _productionDbContext.brands.ToList();
+
+            ViewData[nameof(Category)] = categories;
+            ViewData[nameof(Brand)] = brands;
 
             return View();
         }

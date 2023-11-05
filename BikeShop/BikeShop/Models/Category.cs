@@ -6,7 +6,7 @@ namespace BikeShop.Models
     public class Category
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)] //key 에서 자동 증가 옵션을 해제 하는
         public int? Id { get; set; }
 
         [Required]

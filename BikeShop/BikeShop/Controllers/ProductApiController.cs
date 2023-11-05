@@ -73,37 +73,30 @@ namespace BikeShop.Controllers
 
         [Route("brand")]
         [HttpPost]
-        public IActionResult PostBikeBrand([FromBody] JsonElement category)
+        public IActionResult PostBikeBrand([FromBody] JsonElement brand)
         {
-            var maxcategory = _productionDbContext.categories.Max(category => category.Id);
+            var maxbrandname = _productionDbContext.brands.Max(Brand => Brand.Id);
 
-            if (maxcategory == null)
+            if (maxbrandname == null)
             {
-                maxcategory = 1;
+                maxbrandname = 1;
             }
             else
             {
-                maxcategory++;
+                maxbrandname++;
             }
 
 
-            string category_string = System.Text.Json.JsonSerializer.Serialize(category); // net6 의 system.text.json 은 데이터를 전송할때 오류를 발생 시킴으로 JsonElement 으로 변환 다시 string 형식으로 변환 
+            string brand_string = System.Text.Json.JsonSerializer.Serialize(brand); // net6 의 system.text.json 은 데이터를 전송할때 오류를 발생 시킴으로 JsonElement 으로 변환 다시 string 형식으로 변환 
 
-            var json_category = JObject.Parse(category_string);
+            var json_category = JObject.Parse(brand_string);
 
             string category_name = json_category.Value<string?>("name");
 
             int result_row;
-            using (var transaction = _productionDbContext.Database.BeginTransaction())
-            {
-                Category new_category = new Category() { Id = maxcategory, name = category_name };
-                _productionDbContext.categories.Add(new_category);
-                _productionDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [bikeshop_dev].[dbo].[categories] on");
-                result_row = _productionDbContext.SaveChanges();
-                _productionDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [bikeshop_dev].[dbo].[categories] off");
-                transaction.Commit();
-            }
-
+            Brand new_brand = new Brand() { Id = maxbrandname, Name= category_name };
+            _productionDbContext.brands.Add(new_brand);
+            result_row = _productionDbContext.SaveChanges();
             //ID 직접 입력 이 불가능해서 적용한것 
 
 

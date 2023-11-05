@@ -4,17 +4,17 @@ using BikeShop.Models;
 
 namespace BikeShop.ViewModels
 {
-    public class ViewCategory
+    public class ViewBrand
     {
-
         public int? Id { get; set; }
 
-        public string? name { get; set; }
+        public string? Name { get; set; }
 
-        public ViewCategory(Category category)
+
+        public ViewBrand(Brand brand)
         {
-            Id = category.Id;
-            name = category.name;
+            Id=brand.Id;
+            Name=brand.Name;
         }
     }
 }
