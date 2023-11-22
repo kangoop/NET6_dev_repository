@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\assets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\pc1\\OneDrive\\Desktop\\Local\\Dev\\Net6\\BikeShop\\BikeShop_Dev\\BikeShop\\BikeShop\\wwwroot\\assets\\icon\\file-plus.svg",
+      "PackagePath": "staticwebassets\\assets\\icon\\file-plus.svg"
+    },
+    {
       "Id": "C:\\Users\\pc1\\OneDrive\\Desktop\\Local\\Dev\\Net6\\BikeShop\\BikeShop_Dev\\BikeShop\\BikeShop\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

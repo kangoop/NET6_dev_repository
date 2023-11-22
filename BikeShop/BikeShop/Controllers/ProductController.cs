@@ -31,6 +31,14 @@ namespace BikeShop.Controllers
         {
             var baseurl = _HttpContextAccessor.HttpContext?.Request;
 
+            var categories = _productionDbContext.categories.ToList();
+
+            var brands = _productionDbContext.brands.ToList();
+
+            ViewData[nameof(Category)] = categories;
+            ViewData[nameof(Brand)] = brands;
+
+
             return View();
         }
 

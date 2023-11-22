@@ -23,7 +23,8 @@
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td>@item.name</td>
+                    <td> <div>@item.name <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></div> </td>
+                    
                 </tr>
             }
 
@@ -61,7 +62,7 @@
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td>@item.Name</td>
+                    <td> <div>@item.name<button type="button" class="btn btn-outline-primary">Edit</button></div></td>                
                 </tr>
             }
 
@@ -86,7 +87,9 @@
         </button>
     </div>
 
-
+    @*
+    Toast 박스
+    *@
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
@@ -100,12 +103,31 @@
             </div>
         </div>
     </div>
+
+    @*
+    내용변경을 위한 modal
+    *@
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-
-@*
-Toast 박스 
-*@
 
 
 
@@ -113,8 +135,8 @@ Toast 박스
 <script>
 
     
-    let button = document.getElementById("addbiketype");
-    button.addEventListener("click", () => {
+    const typebutton = document.getElementById("addbiketype");
+    typebutton.addEventListener("click", () => {
         let url = "@(ViewData["hosturl"])";
         let biketype = document.getElementById("categoryname");
         let data = JSON.stringify({ name: biketype.value });
@@ -123,14 +145,14 @@ Toast 박스
        
     });
 
-    button = document.getElementById("addbrand");
-    button.addEventListener("click", () => {
+    const brandbutton = document.getElementById("addbrand");
+    brandbutton.addEventListener("click", () => {
 
         let url = "@(ViewData["hosturl"])";
         let bikebrand = document.getElementById("brandname");
         let data = JSON.stringify({ name: bikebrand.value });
 
-        addCategory(url, "/api/Product/brand", data, document.getElementById("liveToast"));
+        addbrand(url, "/api/Product/brand", data, document.getElementById("liveToast"));
 
         //addCategory("api/ProductApi", data);
 

@@ -45,17 +45,9 @@ namespace BikeShop.Controllers
             string category_name = json_category.Value<string?>("name");
 
             int result_row;
-            using (var transaction = _productionDbContext.Database.BeginTransaction())
-            {
-                Category new_category = new Category() { Id = maxcategory, name = category_name };
-                _productionDbContext.categories.Add(new_category);
-                _productionDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [bikeshop_dev].[dbo].[categories] on");
-                result_row = _productionDbContext.SaveChanges();
-                _productionDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [bikeshop_dev].[dbo].[categories] off");
-                transaction.Commit();
-            }
-
-            //ID 직접 입력 이 불가능해서 적용한것 
+            Category new_category = new Category() { Id = maxcategory, name = category_name };
+            _productionDbContext.categories.Add(new_category);
+            result_row = _productionDbContext.SaveChanges();
 
 
             if (result_row >0)
@@ -65,9 +57,7 @@ namespace BikeShop.Controllers
             else
             {
                 return BadRequest();
-            }
-
-            
+            }         
         }
 
 
@@ -94,7 +84,7 @@ namespace BikeShop.Controllers
             string category_name = json_category.Value<string?>("name");
 
             int result_row;
-            Brand new_brand = new Brand() { Id = maxbrandname, Name= category_name };
+            Brand new_brand = new Brand() { Id = maxbrandname, name= category_name };
             _productionDbContext.brands.Add(new_brand);
             result_row = _productionDbContext.SaveChanges();
             //ID 직접 입력 이 불가능해서 적용한것 

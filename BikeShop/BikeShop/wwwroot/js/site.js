@@ -16,20 +16,18 @@ function addCategory(base,uri, data,toastbox) {
             console.info("sucess");
 
             if (response.status == 200) {
-                
+
                 toastbox.childNodes[3].textContent = "Sucess";
 
-                var toast = new bootstrap.Toast(toastbox)
-
-                toast.show();
             } else {
                 toastbox.childNodes[3].style.backgroundColor = "red";
                 toastbox.childNodes[3].textContent = "Faild";
 
-                var toast = new bootstrap.Toast(toastbox)
-
-                toast.show();
             }
+
+            var toast = new bootstrap.Toast(toastbox)
+
+            toast.show();
 
         }).catch(error => { console.log("Error");  console.log(error); });
 
@@ -58,3 +56,33 @@ function setCategory(uri, data) {
 
 }
 
+
+function addbrand(base, uri, data, toastbox) {
+
+    fetch(uri, {
+        method: "post",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+    }).then(response => {
+        console.info("sucess");
+
+        if (response.status == 200) {
+
+            toastbox.childNodes[3].textContent = "Sucess";
+
+        } else {
+            toastbox.childNodes[3].style.backgroundColor = "red";
+            toastbox.childNodes[3].textContent = "Faild";
+
+        }
+
+        var toast = new bootstrap.Toast(toastbox)
+
+        toast.show();
+
+    }).catch(error => { console.log("Error"); console.log(error); });
+
+}

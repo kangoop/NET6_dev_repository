@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 
 namespace BikeShop.Models
 {
@@ -11,6 +13,15 @@ namespace BikeShop.Models
 
         [Required]
         [Column(TypeName = "varchar(255)")]
-        public string? Name { get; set; }
+        public string? name { get; set; }
+
+        [Required]
+        [DefaultValue("Y")]
+        [Column(TypeName ="varchar(10)")]
+        public string? ISUSEABLE { get;set; }
+
+        [Required]
+        [Column(TypeName = "datetime2")]
+        public DateTime? CREATETIME { get; set; }
     }
 }

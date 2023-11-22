@@ -3,23 +3,108 @@
 *@
 @{
     Layout = "_Layout";
-}
-<div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
-    <div class="col d-flex flex-column align-items-start gap-2">
-        <h2 class="fw-bold text-body-emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이러한 멋진 기능을 설명하는 왼쪽 정렬 제목</font></font></h2>
-        <p class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">제목 아래에 제목을 설명하는 텍스트 단락입니다. </font><font style="vertical-align: inherit;">여기에 다른 문장을 추가하고 아마도 단어가 다 떨어질 때까지 계속할 것입니다.</font></font></p>
-        <a href="#" class="btn btn-primary btn-lg"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 버튼</font></font></a>
-    </div>
 
-    <div class="col">
-        <div class="row">
-            <ul class="list-group">
-                <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-            </ul>
+    Brand[] brands = (ViewData[nameof(Brand)] as List<Brand>) == null ? new List<Brand>().ToArray() : (ViewData[nameof(Brand)] as List<Brand>).ToArray();
+    Category[] categories = (ViewData[nameof(Category)] as List<Category>) == null ? new List<Category>().ToArray() : (ViewData[nameof(Category)] as List<Category>).ToArray();
+
+}
+
+
+<div class="container">
+
+    <div class="row" id="productInfo">
+
+        <div class="col" id="productimg">
+                <img  src="~/assets/icon/file-plus.svg" style="height:320px;width180px;object-fit:contain;"/>
+                <input type="file" id="productimgfile" style="display:none" />
         </div>
+
+                <div class="col">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="productname" placeholder="제품명">
+                                <label for="productname">제품명</label>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                           <div class="mb-3">
+                                <select id="brandselect" class="form-select" aria-label="Default select example">\
+
+                                    @for (int i = 0; i < brands.Length; i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <option value="@brands[i].Id">@brands[i].name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@brands[i].Id">@brands[i].name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                    
+                    <div class="row">
+                        <div class="mb-3">
+                                <select id="categoryselect"  class="form-select" aria-label="Default select example">
+                                    @for (int i = 0; i < categories.Length; i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <option value="@categories[i].Id">@categories[i].name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@categories[i].Id">@categories[i].name</option>
+                                        }
+                                    }
+                                </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3">
+                            <input type="date" class="form-control" id="publishdate" >
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="productcount" class="form-label">제품수량</label>
+                            <input type="number" id="productcount" class="form-control" value="0" />
+                        </div>
+                    </div>
+
+                </div>
     </div>
 </div>
+
+
+<hr/>
+
+<div class="row">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+        </div>
+
+</div>
+
+
+<script>
+    const productimg = document.getElementById("productimg");
+    productimg.addEventListener("click", () => {
+        const productimg_input = document.getElementById("productimgfile");
+        if (productimg_input){
+            productimg_input.click();
+
+            console.info("file");
+        }
+    });
+
+</script>

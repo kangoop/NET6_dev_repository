@@ -19,9 +19,19 @@ namespace BikeShop.Data
         public DbSet<Brand?> brands { get; set; }
 
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().Property(m=>m.CREATETIME).HasDefaultValue(DateTime.Now);
+
+            modelBuilder.Entity<Brand>().Property(m =>m.CREATETIME).HasDefaultValue(DateTime.Now);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.LogTo(msg=>Debug.WriteLine(msg)); //콘솔창에 디버깅 
+
+
         }
 
 

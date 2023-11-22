@@ -16,3 +16,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+#productimg{
+    width:auto;
+    height:auto;
+}
+
+#productInfo {
+    margin-top: 10px;
+    margin-left : 20%;
+    margin-right: 20%;
+}
+
+
+#productimg:hover{
+    opacity:0.5;
+}

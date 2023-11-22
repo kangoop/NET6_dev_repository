@@ -14,7 +14,7 @@ namespace BikeShop.ViewModels
         public ViewBrand(Brand brand)
         {
             Id=brand.Id;
-            Name=brand.Name;
+            Name=brand.name;
         }
     }
 }
