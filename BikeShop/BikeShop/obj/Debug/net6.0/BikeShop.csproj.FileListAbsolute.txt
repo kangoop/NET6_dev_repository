@@ -136,3 +136,5 @@ C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\Bike
 C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\BikeShop\obj\Debug\net6.0\BikeShop.pdb
 C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\BikeShop\obj\Debug\net6.0\BikeShop.genruntimeconfig.cache
 C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\BikeShop\obj\Debug\net6.0\ref\BikeShop.dll
+C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\BikeShop\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout_onlymenu.cshtml.rz.scp.css
+C:\Users\pc1\OneDrive\Desktop\Local\Dev\Net6\BikeShop\BikeShop_Dev\BikeShop\BikeShop\obj\Debug\net6.0\BikeShop.sourcelink.json

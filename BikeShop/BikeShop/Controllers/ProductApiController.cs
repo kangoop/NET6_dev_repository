@@ -61,6 +61,37 @@ namespace BikeShop.Controllers
         }
 
 
+        [Route("category")]
+        [HttpPut]
+        public IActionResult UpdateBikeCategory([FromBody] JsonElement category)
+        {
+
+            string category_string = System.Text.Json.JsonSerializer.Serialize(category); // net6 의 system.text.json 은 데이터를 전송할때 오류를 발생 시킴으로 JsonElement 으로 변환 다시 string 형식으로 변환 
+
+            var json_category = JObject.Parse(category_string);
+
+            string category_id = json_category.Value<string?>("id");
+
+            int id = int.Parse(category_id);
+
+            string category_name = json_category.Value<string?>("name");
+
+            var find_category = _productionDbContext.categories.Find(id);
+
+            find_category.name = category_name;
+
+            var result_row = _productionDbContext.SaveChanges();
+
+            if (result_row > 0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
         [Route("brand")]
         [HttpPost]
         public IActionResult PostBikeBrand([FromBody] JsonElement brand)

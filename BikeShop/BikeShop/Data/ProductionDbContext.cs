@@ -31,7 +31,6 @@ namespace BikeShop.Data
         {
             optionsBuilder.LogTo(msg=>Debug.WriteLine(msg)); //콘솔창에 디버깅 
 
-
         }
 
 

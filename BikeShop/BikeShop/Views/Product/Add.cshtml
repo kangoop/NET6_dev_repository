@@ -3,17 +3,57 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_Layout";
-
-
-    
+    Layout = "_Layout_onlymenu";
 }
 
 @section Site{<partial name="_SiteScriptPartial" />}
 
+<script>
+
+    //data- 태그를 이용한 rest api 수정 
+
+    function select_category_rowindex(e) {
+     
+        const modal = document.getElementById("modalbtnsavecategory");
+
+        modal.dataset.index = e.dataset.index;
+
+    }
+
+    function select_brand_rowindex(e) {
+
+        const modal = document.getElementById("modalbtnsavecategory");
+
+        modal.dataset.index = e.dataset.index;
+
+    }
+
+</script>
+
 <div class="container">
-    
-        <table class="table" id="categoryTable">
+
+    <h3 class="form-label">카테고리</h3>
+
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <h3>자전거종류</h3>
+                    <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
+                </div>
+            </div>
+
+
+
+            <button class="w-100 btn btn-primary btn-lg" id="addbiketype" type="submit">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">자전거종류 등록하기</font>
+                </font>
+            </button>
+        </div>
+
+    <hr class="my-4">
+
+    <table class="table" id="categoryTable">
             <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -23,7 +63,24 @@
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td> <div>@item.name <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></div> </td>
+                    <td>
+                        <div>@item.name
+                        <button type="button" class="btn btn-outline-primary"
+                                onclick="select_category_rowindex(this)"
+                        data-index="@item.Id"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal">수정</button> 
+
+                        @if (item.ISUSEABLE == "N")
+                        {
+                            <button type="button" class="btn btn-outline-danger">사용</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-danger">미사용</button>
+                        }                    
+                        </div>
+                    </td>
                     
                 </tr>
             }
@@ -32,27 +89,32 @@
     
     <hr class="my-0" />
 
-    <div class="container">
-        <div class="row g-3">
-        <div class="col-sm-6">
-            <h3>자전거종류</h3>
-        <input type="text" class="form-control" id="categoryname" placeholder="" value="" required="">
-        </div>
-        </div>
 
-
-        <hr class="my-4"> 
-
-        <button class="w-100 btn btn-primary btn-lg" id="addbiketype" type="submit"><font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">자전거종류 등록하기</font>
-            </font>
-        </button>
-    </div>
 
     <hr class="=my-4" />
 
-  
-        <table class="table" id="brandTable">
+
+    <h3 class="form-label">브랜드</h3>
+
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <h3>브랜드종류</h3>
+                    <input type="text" class="form-control" id="brandname" placeholder="" value="" required="">
+                </div>
+            </div>
+
+
+            <button class="w-100 btn btn-primary btn-lg" id="addbrand" type="submit">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">브랜드종류 등록하기</font>
+                </font>
+            </button>
+        </div>
+
+    <hr class="my-4" />
+
+    <table class="table" id="brandTable">
             <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -62,7 +124,25 @@
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td> <div>@item.name<button type="button" class="btn btn-outline-primary">Edit</button></div></td>                
+                    <td> 
+                        <div>@item.name
+                        <button type="button" class="btn btn-outline-primary"
+                                onclick="select_brand_rowindex(this)"
+                                data-index="@item.Id"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">수정</button>
+
+                        @if (item.ISUSEABLE == "N")
+                        {
+                            <button type="button" class="btn btn-outline-danger">사용</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-danger">미사용</button>
+                        }
+
+                        </div>
+                    </td>
                 </tr>
             }
 
@@ -70,22 +150,7 @@
 
     <hr class="my-0" />
 
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-sm-6">
-                <h3>브랜드종류</h3>
-                <input type="text" class="form-control" id="brandname" placeholder="" value="" required="">
-            </div>
-        </div>
 
-         <hr class="my-4"> 
-
-        <button class="w-100 btn btn-primary btn-lg" id="addbrand" type="submit">
-            <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">브랜드종류 등록하기</font>
-            </font>
-        </button>
-    </div>
 
     @*
     Toast 박스
@@ -113,15 +178,35 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">카테고리</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <span class="input-group-text" id="inputGroup-sizing-default">변경내용</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" >취소</button>
+                    <button type="button" class="btn btn-primary" id="modalbtnsavecategory" data-index="-1">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">브랜드</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span class="input-group-text" id="inputGroup-sizing-default">변경내용</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="modalbtnsavebrand" data-index="-1">저장</button>
                 </div>
             </div>
         </div>
@@ -133,6 +218,29 @@
 
 
 <script>
+
+    const modalbuttonbrand = document.getElementById("modalbtnsavebrand");
+    modalbuttonbrand.addEventListener("click", (e) => {
+
+        const modal_category_body = document.getElementById("exampleModal2").getElementsByClassName("modal-body")[0].getElementsByClassName("form-control");
+
+        let data = JSON.stringify({ id: modalbuttoncategory.dataset.index, name: modal_category_body[0].value });
+
+        console.info(data);
+
+    });
+
+    const modalbuttoncategory = document.getElementById("modalbtnsavecategory");
+    modalbuttoncategory.addEventListener("click", (e) => {
+
+         
+        const modal_category_body = document.getElementById("exampleModal").getElementsByClassName("modal-body")[0].getElementsByClassName("form-control");
+        
+        let data = JSON.stringify({ id: modalbuttoncategory.dataset.index, name: modal_category_body[0].value });
+
+        updateCategory("/api/Product/category", data, document.getElementById("exampleModal"));
+
+    });
 
     
     const typebutton = document.getElementById("addbiketype");
@@ -153,8 +261,6 @@
         let data = JSON.stringify({ name: bikebrand.value });
 
         addbrand(url, "/api/Product/brand", data, document.getElementById("liveToast"));
-
-        //addCategory("api/ProductApi", data);
 
     });
 

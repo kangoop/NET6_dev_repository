@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 
-function addCategory(base,uri, data,toastbox) {   
+function addCategory(base, uri, data,toastbox) {   
 
         fetch(uri, {
             method: "post",
@@ -51,8 +51,56 @@ function getCategory(uri) {
 
 }
 
-function setCategory(uri, data) {
+function updateCategory(uri, data,modal) {
 
+    fetch(uri, {
+        method: "put",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+
+    }).then(response => {
+ 
+
+        if (response.status == 200) {
+
+            console.info("sucess");
+
+            const modaltag = modal.getElementsByClassName("btn-close")[0];
+
+            modaltag.click();
+
+        } else {
+
+        }
+
+    }).catch(error => { console.log(error); });
+
+}
+
+
+function updatebrand(uri, data, modal) {
+
+    fetch(uri, {
+        method: "put",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+
+    }).then(response => {
+        console.info("sucess");
+
+        if (response.status == 200) {
+
+        } else {
+
+        }
+
+    }).catch(error => { console.log("Error"); });
 
 }
 

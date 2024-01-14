@@ -20,8 +20,7 @@ namespace BikeShop
             var ConnectionStrings = builder.Configuration.GetSection("ConnectionStrings")["Default"];
 
             //서비스 주입
-            builder.Services.AddDbContext<ProductionDbContext>(options =>
-            options.UseSqlServer(ConnectionStrings));
+            builder.Services.AddDbContext<ProductionDbContext>(options => options.UseSqlServer(ConnectionStrings));
 
             builder.Services.AddHttpContextAccessor();
 

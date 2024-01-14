@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_Layout";
+    Layout = "_Layout_onlymenu";
 
     Brand[] brands = (ViewData[nameof(Brand)] as List<Brand>) == null ? new List<Brand>().ToArray() : (ViewData[nameof(Brand)] as List<Brand>).ToArray();
     Category[] categories = (ViewData[nameof(Category)] as List<Category>) == null ? new List<Category>().ToArray() : (ViewData[nameof(Category)] as List<Category>).ToArray();
